@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijava</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: black; /* Crna pozadina */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1); /* Poluprovidna pozadina */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        input {
+            padding: 10px;
+            margin: 5px;
+            width: 200px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ffeb3b;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #fbc02d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prijavi se</h1>
+        <input type="text" id="username" placeholder="Korisničko ime">
+        <input type="password" id="password" placeholder="Lozinka">
+        <button onclick="login()">Prijavi se</button>
+        <p id="message"></p>
+    </div>
+    
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('message');
+
+            // Definiši korisničke podatke
+            const users = [
+                { user: 'sake', pass: 'hama' },
+                { user: 'gwman', pass: 'gwman2' },
+                { user: '/seksi2', pass: '/seksi1' }
+            ];
+
+            // Proveri da li su korisničko ime i lozinka ispravni
+            const isValidUser = users.some(u => u.user === username && u.pass === password);
+
+            if (isValidUser) {
+                // Ako je korisnik validan, preusmeri ga na glavnu stranicu
+                window.location.href = 'index.html';
+            } else {
+                message.textContent = 'Pogrešno korisničko ime ili lozinka. Pokušajte ponovo.';
+            }
+        }
+    </script>
+</body>
+</html>
